@@ -67,7 +67,26 @@ permalink: /charactercreation
     <br>
     <button class="buttons" onclick="submitinfo()">Submit</button>
     <img class="candle" src="https://i.postimg.cc/wj2FYHpM/candle-removebg-preview.png">
+    <!-- <script type="module">
+        import uri from '{{site.baseurl}}/assets/js/api/config.js';
+        var uri = uri
+        console.log("HI" + uri)
+        // import('{{site.baseurl}}/assets/js/api/config.js')
+        //     .then(module => {
+        //         window.uri = module.uri;
+        //     })
+        //     .catch(error => console.error('Error importing config module:', error));
+    </script> -->
     <script>
+        var uri;
+            if (location.hostname === "localhost") {
+                    uri = "http://localhost:8086";
+            } else if (location.hostname === "127.0.0.1") {
+                    uri = "http://127.0.0.1:8086";
+            } else {
+                    uri = "https://wrong.nighthawkcodingsociety.com";
+            }
+        console.log("BYE" + uri)
         const class_descriptions = {
             Knight: "You've selected the Knight class! Strong, loyal, and determined, this class features a balance between offense and defense.",
             Mage: "You've selected the Mage class! Intelligent and calm, this class features the ability to attack any space on the map at the cost of a lower health.",
@@ -94,7 +113,8 @@ permalink: /charactercreation
                 table.style.display = "block";
             }
             // Fetch stuff
-            const url = "http://127.0.0.1:8086/api/classes/";
+            const url = uri + "/api/classes/";
+            // const url = "http://127.0.0.1:8086/api/classes/";
             const options = {
                 method: 'GET', // *GET, POST, PUT, DELETE, etc.
                 mode: 'cors', // no-cors, *cors, same-origin
@@ -178,7 +198,8 @@ permalink: /charactercreation
             });
         };
         function submitinfo() {
-            const url = "http://127.0.0.1:8086/api/currentchar/";
+            const url = uri + "/api/currentchar/";
+            // const url = "http://127.0.0.1:8086/api/currentchar/";
             // get class information from table (which should be updated with the get request)
             var table = document.getElementById("result");
             var row = table.getElementsByTagName("tr");
