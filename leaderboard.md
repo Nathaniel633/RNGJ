@@ -29,7 +29,7 @@ Permalink: /leaderboard/
   <button type="submit">Menu</button>
   </form>
 
-<a href="http://127.0.0.1:4100/WRONG/charactercreation"><button class="startbutton" type="button">Start Game</button></a>
+<a href="http://{{site.baseurl}}/WRONG/charactercreation"><button class="startbutton" type="button">Start Game</button></a>
 
 
 <script type="module">
@@ -60,6 +60,9 @@ Permalink: /leaderboard/
       }
       // valid response will contain JSON data
       response.json().then(data => {
+          data.sort((first, second) => {
+          return second.wins - first.wins;
+          });
           console.log(data);
           for (const row of data) {
             // tr and td build out for each row
@@ -87,6 +90,20 @@ Permalink: /leaderboard/
             // append the row to table
             resultContainer.appendChild(tr);
           }
+            // Store users in an array
+            const users = [];
+
+            for (const row of data) {
+                // Create a user object
+                const user = {
+                    name: row.name,
+                    id: row.uid,
+                    age: row.age,
+                    Nick: row.Nick,
+                    role: row.role,
+                    wins: row.wins,
+            };
+          }
       })
   })
   // catch fetch errors (ie ACCESS to server blocked)
@@ -99,3 +116,4 @@ Permalink: /leaderboard/
     resultContainer.appendChild(tr);
   });
 </script>
+
