@@ -56,7 +56,6 @@ The script defines a function when the page loads. This function is triggered wh
         fetch(url, authOptions)
         .then(response => {
             // handle error response from Web API
-            console.log("yippee2")
             if (!response.ok) {
                 const errorMsg = 'Login error: ' + response.status;
                 console.log(errorMsg);
