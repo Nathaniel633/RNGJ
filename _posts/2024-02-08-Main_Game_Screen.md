@@ -222,10 +222,12 @@ permalink: /gamescreen
           if (choice == 1) {
             enemymove();
             console.log("Enemy has moved to " + enemyposition)
+            alert("Enemy has moved")
           }
           else if (choice == 2) {
             enemyattack();
             console.log("Enemy has attacked")
+            alert("Enemy has attacked")
           }
           // Check positions and give alert if conditions met
           checkPosition(position, enemyspot)
@@ -256,10 +258,12 @@ permalink: /gamescreen
           if (choice == 1) {
             enemymove();
             console.log("Enemy has moved")
+            alert("Enemy has moved")
           }
           else if (choice == 2) {
             enemyattack();
             console.log("Enemy has attacked")
+            alert("Enemy has attacked")
           }
         }
       }
